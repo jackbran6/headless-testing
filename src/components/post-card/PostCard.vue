@@ -3,9 +3,17 @@
     <div class="card-shadow">
       <div class="card-body">
         <h5 class="card-title">
-          <NuxtLink :to="{ name: 'slug', params: { slug: post.slug } }">{{
-            post.title
-          }}</NuxtLink>
+          <NuxtLink
+            :to="{
+              name: 'slug',
+              params: {
+                slug: post.slug,
+                title: post.title,
+                content: post.content
+              }
+            }"
+            >{{ post.title }}</NuxtLink
+          >
         </h5>
         <!-- eslint-disable-next-line vue/no-v-html -->
         <div class="card-text" v-html="post.excerpt"></div>
@@ -23,6 +31,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .card {
+  margin-bottom: 5vw;
   width: 80vw;
 }
 .card-shadow {

@@ -4,7 +4,7 @@
       <h1 class="title">Headless WordPress NuxtDemo</h1>
       <div class="card-container">
         <div class="row">
-          <post-card v-for="post in posts" :key="post.slug" :post="post" />
+          <post-card v-for="post in posts" :key="post.id" :post="post" />
         </div>
       </div>
     </div>
@@ -27,19 +27,6 @@ export default Vue.extend({
   head: {
     title: 'Hello world!'
   },
-  // // computed: {
-  // //   posts() {
-  // //     return [{}]
-  // //   },
-  // //   pageInfo() {
-  // //     return {
-  // //       endCursor: '',
-  // //       hasNextPage: false,
-  // //       hasPreviousPage: false,
-  // //       startCursor: ''
-  // //     }
-  // //   }
-  // },
 
   async created() {
     try {
@@ -48,7 +35,6 @@ export default Vue.extend({
       )
 
       this.posts = response.data
-      console.log(this.posts)
     } catch (e) {
       console.log(e)
     }
