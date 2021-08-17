@@ -27,7 +27,7 @@ export default Vue.extend({
 }
 .card-shadow {
   border: 1px solid;
-  box-shadow: 5px 10px;
+  box-shadow: 10px 10px;
   padding: 10px;
 }
 </style>
