@@ -16,6 +16,20 @@ import axios from 'axios'
 
 export default Vue.extend({
   name: 'Home',
+
+  async asyncData() {
+    try {
+      const response = await axios.get(
+        `http://localhost:8000/wp-json/wp/v2/books`
+      )
+
+      return {
+        posts: response.data
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  },
   data() {
     return {
       posts: {
@@ -26,18 +40,6 @@ export default Vue.extend({
 
   head: {
     title: 'Hello world!'
-  },
-
-  async created() {
-    try {
-      const response = await axios.get(
-        `http://localhost:8000/wp-json/wp/v2/books`
-      )
-
-      this.posts = response.data
-    } catch (e) {
-      console.log(e)
-    }
   }
 })
 </script>

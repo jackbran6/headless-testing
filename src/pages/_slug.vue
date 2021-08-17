@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <div class="content">
-      <h1 class="title">{{ $route.params.title }}</h1>
+      <h1 class="title">{{ $route.params.title.rendered }}</h1>
       <!-- eslint-disable-next-line vue/no-v-html -->
-      <div class="card-text" v-html="$route.params.content"></div>
+      <div class="card-text" v-html="$route.params.content.rendered"></div>
     </div>
   </div>
 </template>

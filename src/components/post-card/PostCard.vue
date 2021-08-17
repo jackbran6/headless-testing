@@ -12,11 +12,11 @@
                 content: post.content
               }
             }"
-            >{{ post.title }}</NuxtLink
+            >{{ post.title.rendered }}</NuxtLink
           >
         </h5>
         <!-- eslint-disable-next-line vue/no-v-html -->
-        <div class="card-text" v-html="post.excerpt"></div>
+        <div class="card-text" v-html="post.excerpt.rendered"></div>
       </div>
     </div>
   </article>
