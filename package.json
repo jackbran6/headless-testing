@@ -12,8 +12,12 @@
     "lint": "yarn lint:js && yarn lint:style"
   },
   "dependencies": {
+    "apollo-boost": "^0.4.9",
     "core-js": "^3.14.0",
-    "nuxt": "^2.15.6"
+    "graphql": "^15.5.1",
+    "isomorphic-fetch": "^3.0.0",
+    "nuxt": "^2.15.6",
+    "vue-apollo": "^3.0.7"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.6",
@@ -21,6 +25,7 @@
     "@nuxtjs/eslint-config-typescript": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/stylelint-module": "^4.0.0",
+    "@types/isomorphic-fetch": "^0.0.35",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.28.0",
     "eslint-config-prettier": "^8.3.0",
