@@ -47,5 +47,8 @@ export default {
   srcDir: 'src/',
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {},
+
+  // If pulled from git - add your own .env file
+  publicRuntimeConfig: { token: process.env.JWT_TOKEN || 0 }
 }

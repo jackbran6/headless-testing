@@ -64,25 +64,21 @@ export default Vue.extend({
         status: 'publish'
       }
 
+      const config = {
+        url: 'http://localhost:8000/wp-json/wp/v2/books',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: this.$config.token
+        }
+      }
+
       axios
-        .post(
-          `http://localhost:8000/wp-json/wp/v2/books`,
-
-          {
-            body: this.newBook,
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization:
-                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMCIsImlhdCI6MTYyOTIzNzIzMywibmJmIjoxNjI5MjM3MjMzLCJleHAiOjE2Mjk4NDIwMzMsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19._cq2ASUkkDN5D1KjI3vtXL7_3kyrIIiiCtMfjZq5uFA'
-            }
-          }
-        )
-
-        .then((response) => {
-          console.log(response)
+        .post(config.url, this.newBook, config)
+        .then(function (response) {
+          console.log(response.data)
         })
-        .catch((e) => {
-          console.log(e)
+        .catch(function (error) {
+          console.log(error)
         })
     }
   }
