@@ -2,13 +2,37 @@
   <div class="container">
     <div class="add-form">
       <h3 class="title">Book Title:</h3>
-      <textarea id="book-title" name="Book Title" class="title-container" />
+      <textarea
+        id="book-title"
+        ref="bookTitle"
+        v-model="title"
+        name="Book Title"
+        class="title-container"
+      />
       <h3 class="publisher">Publisher:</h3>
-      <textarea id="publisher" name="Publisher" class="publisher-container" />
+      <textarea
+        id="publisher"
+        ref="publisher"
+        v-model="publisher"
+        name="Publisher"
+        class="publisher-container"
+      />
       <h3 class="excerpt">Excerpt:</h3>
-      <textarea id="excerpt" name="Excerpt" class="excerpt-container" />
+      <textarea
+        id="excerpt"
+        ref="excerpt"
+        v-model="excerpt"
+        name="Excerpt"
+        class="excerpt-container"
+      />
       <h3 class="content">Content:</h3>
-      <textarea id="content" name="content" class="content-container" />
+      <textarea
+        id="content"
+        ref="content"
+        v-model="content"
+        name="content"
+        class="content-container"
+      />
       <div class="submit" @click="submit">
         <p class="submit-text">Submit</p>
       </div>
@@ -18,10 +42,48 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import axios from 'axios'
+
 export default Vue.extend({
+  data() {
+    return {
+      title: '',
+      publisher: '',
+      excerpt: '',
+      content: '',
+      newBook: {}
+    }
+  },
   methods: {
     submit() {
-      console.log('Submit')
+      this.newBook = {
+        title: this.title,
+        publisher: this.publisher,
+        excerpt: this.excerpt,
+        content: this.content,
+        status: 'publish'
+      }
+
+      axios
+        .post(
+          `http://localhost:8000/wp-json/wp/v2/books`,
+
+          {
+            body: this.newBook,
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization:
+                'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMCIsImlhdCI6MTYyOTIzNzIzMywibmJmIjoxNjI5MjM3MjMzLCJleHAiOjE2Mjk4NDIwMzMsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19._cq2ASUkkDN5D1KjI3vtXL7_3kyrIIiiCtMfjZq5uFA'
+            }
+          }
+        )
+
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((e) => {
+          console.log(e)
+        })
     }
   }
 })
